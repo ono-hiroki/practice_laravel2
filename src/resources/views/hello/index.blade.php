@@ -18,7 +18,7 @@
         Age: <input type="text" name="age">
     </div>
     <ol>
-        @for($i = 1; $i < count($keys); $i++)
+        @for($i = 0; $i < count($keys); $i++)
             <li>
                 {{$keys[$i]}}: {{$values[$i]}}
             </li>
