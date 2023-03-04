@@ -10,15 +10,12 @@ class HelloController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        $msg = 'plese input text:';
-        $keys = [];
-        $values = [];
-        if ($request->isMethod('post')) {
-            $form = $request->only('name', 'mail', 'tell');
-            $keys = array_keys($form);
-            $values = array_values($form);
-            $msg = old('name'). ', ' . old('mail') . old('tell');
-        }
+        $name = $request->query('name');
+        $mail = $request->query('mail');
+        $tel = $request->query('tel');
+        $msg = $name . 'さん、' . $mail . '、' . $tel;
+        $keys = ['name', 'mail', 'tel'];
+        $values = [$name, $mail, $tel];
         $data = [
             'msg' => $msg,
             'keys' => $keys,

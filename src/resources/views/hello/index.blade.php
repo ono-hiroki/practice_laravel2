@@ -6,7 +6,7 @@
 <body>
 <h1>Hello/Index</h1>
 <p>{{!!$msg!!}}</p>
-<form action="/hello" method="post">
+<form action="/hello" method="get">
     @csrf
     <div>
         Name: <input type="text" name="name" value={{old('name')}}>
@@ -15,7 +15,7 @@
         Mail: <input type="text" name="mail" value={{old('mail')}}>
     </div>
     <div>
-        Tell: <input type="text" name="tell" value={{old('tell')}}>
+        Tel: <input type="text" name="tell" value={{old('tel')}}>
     </div>
     <input type="submit">
 </form>
