@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\MyClasses\MyService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use function GuzzleHttp\Promise\all;
 
 class HelloController extends Controller
 {
-    public function index(Request $request, Response $response)
+    public function index(MyService $my_service)
     {
-        $name = $request->query('name');
-        $mail = $request->query('mail');
-        $tel = $request->query('tel');
-        $msg = $request->query('msg');
-        $keys = ['name', 'mail', 'tel'];
-        $values = [$name, $mail, $tel];
         $data = [
-            'msg' => $msg,
-            'keys' => $keys,
-            'values' => $values,
+            'msg' => $my_service->say(),
+            'data' => $my_service->data(),
         ];
-        $request->flash();
         return view('hello.index', $data);
     }
 
