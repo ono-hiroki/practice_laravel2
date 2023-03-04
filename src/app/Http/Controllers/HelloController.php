@@ -9,11 +9,12 @@ use function GuzzleHttp\Promise\all;
 
 class HelloController extends Controller
 {
-    public function index(MyService $my_service)
+    public function index(int $id = -1)
     {
+        $myservice = app()->makeWith(MyService::class, ['id' => $id]);
         $data = [
-            'msg' => $my_service->say(),
-            'data' => $my_service->data(),
+            'msg' => $myservice->say(),
+            'data' => $myservice->alldata(),
         ];
         return view('hello.index', $data);
     }
