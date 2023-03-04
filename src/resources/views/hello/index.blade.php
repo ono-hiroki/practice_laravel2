@@ -5,10 +5,25 @@
 </head>
 <body>
 <h1>Hello/Index</h1>
-<p>{{$msg}}</p>
+<p>{{!!$msg!!}}</p>
 <form action="/hello" method="post">
     @csrf
-    <input type="text" name="msg">
+    <div>
+        Name: <input type="text" name="name">
+    </div>
+    <div>
+        Mail: <input type="text" name="mail">
+    </div>
+    <div>
+        Age: <input type="text" name="age">
+    </div>
+    <ol>
+        @for($i = 1; $i < count($keys); $i++)
+            <li>
+                {{$keys[$i]}}: {{$values[$i]}}
+            </li>
+        @endfor
+    </ol>
     <input type="submit">
 </form>
 </body>
