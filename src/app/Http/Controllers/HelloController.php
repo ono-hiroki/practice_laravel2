@@ -14,20 +14,17 @@ class HelloController extends Controller
         $keys = [];
         $values = [];
         if ($request->isMethod('post')) {
-            $form = $request->all();
-            $result = '<html><body>';
-            foreach ($form as $key => $value) {
-                $result .= $key . ' : ' . $value . '<br>';
-                            }
-            $result .= '</body></html>';
-            $response->setContent($result);
-            return $response;
+            $form = $request->only('name', 'mail', 'tell');
+            $keys = array_keys($form);
+            $values = array_values($form);
+            $msg = old('name'). ', ' . old('mail') . old('tell');
         }
         $data = [
             'msg' => $msg,
             'keys' => $keys,
             'values' => $values,
         ];
+        $request->flash();
         return view('hello.index', $data);
     }
 

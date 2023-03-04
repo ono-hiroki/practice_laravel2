@@ -9,22 +9,21 @@
 <form action="/hello" method="post">
     @csrf
     <div>
-        Name: <input type="text" name="name">
+        Name: <input type="text" name="name" value={{old('name')}}>
     </div>
     <div>
-        Mail: <input type="text" name="mail">
+        Mail: <input type="text" name="mail" value={{old('mail')}}>
     </div>
     <div>
-        Age: <input type="text" name="age">
+        Tell: <input type="text" name="tell" value={{old('tell')}}>
     </div>
-    <ol>
-        @for($i = 0; $i < count($keys); $i++)
-            <li>
-                {{$keys[$i]}}: {{$values[$i]}}
-            </li>
-        @endfor
-    </ol>
     <input type="submit">
 </form>
+<hr>
+<ol>
+    @for($i = 0; $i < count($keys); $i++)
+        <li>{{$keys[$i]}}: {{$values[$i]}}</li>
+    @endfor
+</ol>
 </body>
 </html>
