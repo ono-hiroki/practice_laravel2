@@ -13,7 +13,7 @@ class HelloController extends Controller
         $name = $request->query('name');
         $mail = $request->query('mail');
         $tel = $request->query('tel');
-        $msg = $name . 'さん、' . $mail . '、' . $tel;
+        $msg = $request->query('msg');
         $keys = ['name', 'mail', 'tel'];
         $values = [$name, $mail, $tel];
         $data = [
@@ -25,4 +25,15 @@ class HelloController extends Controller
         return view('hello.index', $data);
     }
 
+    public function other()
+    {
+        $data = [
+            'name' => '山田太郎',
+            'mail' => 'taro@yamada',
+            'tel' => '090-999-999',
+        ];
+        $query_str = http_build_query($data);
+        $data['msg'] = $query_str;
+        return redirect()->route('hello', $data);
+    }
 }

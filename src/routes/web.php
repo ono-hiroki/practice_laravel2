@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::middleware([HelloMiddleware::class])->group(function () {
     Route::get('/hello', [HelloController::class, 'index'])->name('hello');
     Route::post('/hello', [HelloController::class, 'index']);
-    Route::get('/hello/{msg}', [HelloController::class, 'other']);
+    Route::get('/hello/other', [HelloController::class, 'other']);
 
 });
 
