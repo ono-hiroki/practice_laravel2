@@ -6,5 +6,15 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-    //
+    public function index(Request $request,$id){
+        $data = [
+            'msg' => $id,
+        ];
+
+        return view('hello.index', $data);
+    }
+
+    public function other(){
+        return redirect()->route('hello');
+    }
 }
