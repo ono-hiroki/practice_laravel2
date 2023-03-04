@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 Route::middleware([HelloMiddleware::class])->group(function () {
     Route::get('/hello', [HelloController::class, 'index'])->name('hello');
-    Route::get('/other', [HelloController::class, 'other']);
+    Route::get('/hello/{msg}', [HelloController::class, 'other']);
+
 });
 
 Route::get('sample', [SampleController::class, 'index']);
