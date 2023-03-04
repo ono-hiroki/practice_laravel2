@@ -7,18 +7,15 @@ use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
-    function __construct()
-    {
-        $this->fname = 'hello.txt';
-    }
 
-    public function index()
+    public function index(Request $request)
     {
-        $sample_msg = Storage::disk('public')->url($this->fname);
-        $sample_data = Storage::disk('public')->get($this->fname);
+        $msg = 'plese input text:';
+        if($request->isMethod('POST')){
+            $msg = 'you typed: "' . $request->input('msg') . '"';
+        }
         $data = [
-            'msg' => $sample_msg,
-            'data' => explode(PHP_EOL, $sample_data)
+            'msg' => $msg,
         ];
         return view('hello.index', $data);
     }
