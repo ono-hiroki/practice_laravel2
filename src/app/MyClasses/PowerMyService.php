@@ -13,7 +13,7 @@ class PowerMyService implements MyServiceInterface
         $this->setId(rand(0, count($this->data)));
     }
 
-    public function setId(int $id): void
+    public function setId($id): void
     {
         if ($id >= 0 && $id < count($this->data)) {
             $this->id = $id;

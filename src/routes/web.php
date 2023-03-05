@@ -20,13 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([HelloMiddleware::class])->group(function () {
-    Route::get('/hello', [HelloController::class, 'index'])->name('hello');
-    Route::post('/hello', [HelloController::class, 'index']);
-    Route::get('/hello/{id}', [HelloController::class, 'index']);
-    Route::get('/hello/other', [HelloController::class, 'other']);
 
-});
+Route::get('/hello', [HelloController::class, 'index'])->name('hello');
+Route::post('/hello', [HelloController::class, 'index']);
+Route::get('/hello/{id}', [HelloController::class, 'index']);
+Route::get('/hello/other', [HelloController::class, 'other']);
+
 
 Route::get('sample', [SampleController::class, 'index']);
 Route::get('sample/other', [SampleController::class, 'other']);

@@ -3,8 +3,8 @@ namespace App\MyClasses;
 
 interface MyServiceInterface
 {
-    public function setId(int $id): void;
-    public function say(): string;
-    public function alldata(): array;
+    public function setId($id);
+    public function say();
+    public function alldata();
     public function setData($data);
 }
