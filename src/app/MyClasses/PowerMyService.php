@@ -26,9 +26,9 @@ class PowerMyService implements MyServiceInterface
         return $this->msg;
     }
 
-    public function setData(int $id): string
+    public function setData($data): array
     {
-        return $this->data[$id];
+        return $this->data = $data;
     }
 
     public function alldata(): array
