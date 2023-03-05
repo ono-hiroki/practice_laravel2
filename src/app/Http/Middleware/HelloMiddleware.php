@@ -11,17 +11,12 @@ class HelloMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Request $request
+     * @param Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @return Response
      */
     public function handle(Request $request, Closure $next): Response
     {
-//        $hello = 'Hello! This is Middleware!!';
-//        $bye = 'Good-bye! Middleware!!';
-//        $data = [
-//            'hello' => $hello,
-//            'bye' => $bye,
-//        ];
-//        $request->merge($data);
         return $next($request);
     }
 }

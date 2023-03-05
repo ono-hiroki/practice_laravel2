@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MyClasses\MyService;
+use App\MyClasses\MyServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use function GuzzleHttp\Promise\all;
@@ -11,10 +12,9 @@ class HelloController extends Controller
 {
     function __construct()
     {
-        $myservice = app()->make('App\MyClasses\MyService');
     }
 
-    public function index(MyService $myservice, $id = -1)
+    public function index(MyServiceInterface $myservice, int $id = -1)
     {
         $myservice->setId($id);
         $data = [
