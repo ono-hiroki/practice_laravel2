@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\MyClasses\MyServiceInterface;
+use App\Facades\MyService;
 
 
 
@@ -14,12 +15,12 @@ class HelloController extends Controller
     {
     }
 
-    public function index(MyServiceInterface $myservice, int $id = -1)
+    public function index(int $id = -1)
     {
-        $myservice->setId($id);
+        MyService::setId($id);
         $data = [
-            'msg' => $myservice->say(),
-            'data' => $myservice->alldata(),
+            'msg' => MyService::say(),
+            'data' => MyService::alldata(),
         ];
         return view('hello.index', $data);
     }
