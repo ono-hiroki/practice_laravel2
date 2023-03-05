@@ -9,6 +9,11 @@ use function GuzzleHttp\Promise\all;
 
 class HelloController extends Controller
 {
+    function __construct()
+    {
+        $myservice = app()->make('App\MyClasses\MyService');
+    }
+
     public function index(MyService $myservice, $id = -1)
     {
         $myservice->setId($id);
